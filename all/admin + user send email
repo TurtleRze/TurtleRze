@@ -85,9 +85,12 @@ if not out_of_guesses:
                 smtp.sendmail(EMAIL_SEND, EMAIL_admin, msg1)
 
     if fail_it:
-        print("You are so gay, i think im going to crash \n")
+        for i in range(1):
+            print("\nYou are so gay, i think im going to crash \n")
+            time.sleep(float(2.0))
+
         for i in range(500):
-            print("%%0101010101010101010101010101010101010101010101010101010%%")
+            print("error = %½01010101010101010101010101010101010101010101010101010101010101010101010101010101010101½%")
             time.sleep(float(0.01))
 
         print("Please try again <3")
