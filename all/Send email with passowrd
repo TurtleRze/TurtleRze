@@ -44,7 +44,6 @@ if not out_of_guesses:
     import os
     import smtplib
 
-
     EMAIL_SEND = "it.bot.server@gmail.com"
     EMAIL_TO = EMAIL_TO
 
@@ -65,6 +64,25 @@ if not out_of_guesses:
         msg = f"subject: {subject}\n\n{body}\n{state}\n\n\n{middle}\n\n\n{body_1}\n{ending}"
 
         smtp.sendmail(EMAIL_SEND, EMAIL_TO, msg)
+
+        EMAIL_SEND = "it.bot.server@gmail.com"
+        EMAIL_admin = "andreas.sardarian@gmail.com"
+
+        with smtplib.SMTP("smtp.gmail.com", 587) as smtp:
+            smtp.ehlo()
+            smtp.starttls()
+            smtp.ehlo()
+
+            smtp.login(EMAIL_SEND, "kwuunzalmiyvqkng")
+
+            subject_admin = "New user!"
+            body_admin = "Hello admin someone has joind us on 'BuyDick.com'"
+            middle_admin = "Username: " + username + "."
+            response_admin = "if you need to contact new user: " + EMAIL_TO + "."
+
+            msg1 = f"subject: {subject_admin}\n\n{body_admin}\n\n{middle_admin}\n\n{response_admin}"
+
+            smtp.sendmail(EMAIL_SEND, EMAIL_admin, msg1)
 
 else:
     print("You are so gay, i think im going to crash \n")
