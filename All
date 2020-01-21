@@ -1,0 +1,23 @@
+-#Grades
+i_have_c = False
+i_have_e = True
+i_have_f = False
+
+if (i_have_c) and (i_have_e) and i_have_f:
+    print("Your doing okey at school")
+elif i_have_c and i_have_e and not(i_have_f):
+    print("You should be proud of your grades")
+elif i_have_c and i_have_f and not(i_have_e):
+    print("Your good at sports, but bad at the rest")
+elif i_have_e and i_have_f and not(i_have_c):
+    print("You should quit school")
+
+elif i_have_e and not(i_have_f) or(i_have_c):
+    print("Your name is probably WILLIAM")
+elif i_have_f and not(i_have_e) or(i_have_c):
+    print("Your name is probably Chipsdipp")
+elif i_have_c and not(i_have_e) or(i_have_f):
+    print("You are the best")
+
+else:
+    print("Iv AlrEdY QuIt")
