@@ -9,7 +9,7 @@ guess_count = 0
 guess_limit = 3
 out_of_guesses = False
 
-while guess != password and not (out_of_guesses):
+while guess != password and not out_of_guesses:
     if guess_count < guess_limit:
         guess = input("Enter your password\n> ")
         guess_count += 1
@@ -20,6 +20,7 @@ if not out_of_guesses:
     EMAIL_TO = input("Enter email\n> ")
 else:
     print("You Enter wrong password")
+    exit()
 
 if not out_of_guesses:
     print("Welcome back " + username + " please do answer this security question,")
@@ -29,7 +30,7 @@ if not out_of_guesses:
     answer_limit = 1
     fail_it = False
 
-    while answer != answer_no and not (fail_it):
+    while answer != answer_no and not fail_it:
 
         if answer_count < answer_limit:
             answer = input("are you gay?\n> ")
@@ -41,32 +42,10 @@ if not out_of_guesses:
         print("AHH ha ha you cant lie to me ;) \n")
         print("Now when we are done with the questions, we can start!\n ")
 
-    import os
-    import smtplib
-
-    EMAIL_SEND = "it.bot.server@gmail.com"
-    EMAIL_TO = EMAIL_TO
-
-    with smtplib.SMTP("smtp.gmail.com", 587) as smtp:
-        smtp.ehlo()
-        smtp.starttls()
-        smtp.ehlo()
-
-        smtp.login(EMAIL_SEND, "kwuunzalmiyvqkng")
-
-        subject = "Welcome costumer!"
-        body = "Hello " + username + " thank you for joining us on 'BuyDick.com'"
-        state = "we hope you will enjoy your time with us <3"
-        middle = "Username: " + username + " \nPassword: " + password + "."
-        body_1 = "If you have any questions or need help, please contact us at:"
-        ending = "https://www.youtube.com/watch?v=08BlTV3B4Do"
-
-        msg = f"subject: {subject}\n\n{body}\n{state}\n\n\n{middle}\n\n\n{body_1}\n{ending}"
-
-        smtp.sendmail(EMAIL_SEND, EMAIL_TO, msg)
+        import smtplib
 
         EMAIL_SEND = "it.bot.server@gmail.com"
-        EMAIL_admin = "andreas.sardarian@gmail.com"
+        EMAIL_TO = EMAIL_TO
 
         with smtplib.SMTP("smtp.gmail.com", 587) as smtp:
             smtp.ehlo()
@@ -75,19 +54,41 @@ if not out_of_guesses:
 
             smtp.login(EMAIL_SEND, "kwuunzalmiyvqkng")
 
-            subject_admin = "New user!"
-            body_admin = "Hello admin someone has joind us on 'BuyDick.com'"
-            middle_admin = "Username: " + username + "."
-            response_admin = "if you need to contact new user: " + EMAIL_TO + "."
+            subject = "Welcome costumer!"
+            body = "Hello " + username + " thank you for joining us on 'BuyDick.com'"
+            state = "we hope you will enjoy your time with us <3"
+            middle = "Username: " + username + " \nPassword: " + password + "."
+            body_1 = "If you have any questions or need help, please contact us at:"
+            ending = "https://www.youtube.com/watch?v=08BlTV3B4Do"
 
-            msg1 = f"subject: {subject_admin}\n\n{body_admin}\n\n{middle_admin}\n\n{response_admin}"
+            msg = f"subject: {subject}\n\n{body}\n{state}\n\n\n{middle}\n\n\n{body_1}\n{ending}"
 
-            smtp.sendmail(EMAIL_SEND, EMAIL_admin, msg1)
+            smtp.sendmail(EMAIL_SEND, EMAIL_TO, msg)
 
-else:
-    print("You are so gay, i think im going to crash \n")
-    for i in range(500):
-        print("%%0101010101010101010101010101010101010101010101010101010%%")
-        time.sleep(float(0.01))
+            EMAIL_SEND = "it.bot.server@gmail.com"
+            EMAIL_admin = "andreas.sardarian@gmail.com"
+
+            with smtplib.SMTP("smtp.gmail.com", 587) as smtp:
+                smtp.ehlo()
+                smtp.starttls()
+                smtp.ehlo()
+
+                smtp.login(EMAIL_SEND, "kwuunzalmiyvqkng")
+
+                subject_admin = "New user!"
+                body_admin = "Hello admin someone has joind us on 'BuyDick.com'"
+                middle_admin = "Username: " + username + "."
+                response_admin = "if you need to contact new user: " + EMAIL_TO + "."
+
+                msg1 = f"subject: {subject_admin}\n\n{body_admin}\n\n{middle_admin}\n\n{response_admin}"
+
+                smtp.sendmail(EMAIL_SEND, EMAIL_admin, msg1)
+
+    if fail_it:
+        print("You are so gay, i think im going to crash \n")
+        for i in range(500):
+            print("%%0101010101010101010101010101010101010101010101010101010%%")
+            time.sleep(float(0.01))
 
         print("Please try again <3")
+        exit()
