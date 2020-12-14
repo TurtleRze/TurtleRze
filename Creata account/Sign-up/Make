@@ -1,0 +1,98 @@
+#Creata account/ Sign-up
+import time
+
+username = input("Make your one account\nSelect username then press enter\n> ")
+password = input("Select a secure password\n> ")
+
+password = password
+guess = ""
+guess_count = 0
+guess_limit = 3
+out_of_guesses = False
+
+while guess != password and not out_of_guesses:
+    if guess_count < guess_limit:
+        guess = input("Confirm Password\n> ")
+        guess_count += 1
+    else:
+        out_of_guesses = True
+
+if not out_of_guesses:
+    EMAIL_TO = input("Enter email\n> ")
+else:
+    print("You Enter wrong password")
+    exit()
+
+if not out_of_guesses:
+    print("Welcome back " + username + " please do answer this security question,")
+    answer_no = "Yes"
+    answer = ""
+    answer_count = 0
+    answer_limit = 1
+    fail_it = False
+
+    while answer != answer_no and not fail_it:
+
+        if answer_count < answer_limit:
+            answer = input("Do you like the brand SeventySeven?\n> ")
+            answer_count += 1
+        else:
+            fail_it = True
+
+    if not fail_it:
+        print("That's the right answer! ;) \n")
+        print("Please confirm you account on your email!\n ")
+
+        import smtplib
+
+        EMAIL_SEND = "it.bot.server@gmail.com"
+        EMAIL_TO = EMAIL_TO
+
+        with smtplib.SMTP("smtp.gmail.com", 587) as smtp:
+            smtp.ehlo()
+            smtp.starttls()
+            smtp.ehlo()
+
+            smtp.login(EMAIL_SEND, "kwuunzalmiyvqkng")
+
+            subject = "Welcome costumer!"
+            body = "Hello " + username + " thank you for joining us on 'SeventySeven'"
+            state = "we hope you will enjoy your time with us <3"
+            middle = "Username: " + username + " \nPassword: " + password + "."
+            body_1 = "If you have any questions or need help, please contact us at:"
+            ending = "\nInstagram: seventysevenuf\n\nEmail: seventysevenuf@gmail.com"
+
+            msg = f"subject: {subject}\n\n{body}\n{state}\n\n\n{middle}\n\n\n{body_1}\n{ending}"
+
+            smtp.sendmail(EMAIL_SEND, EMAIL_TO, msg)
+
+            EMAIL_SEND = "it.bot.server@gmail.com"
+            EMAIL_admin = "andreas.sardarian@gmail.com"
+
+            with smtplib.SMTP("smtp.gmail.com", 587) as smtp:
+                smtp.ehlo()
+                smtp.starttls()
+                smtp.ehlo()
+
+                smtp.login(EMAIL_SEND, "kwuunzalmiyvqkng")
+
+                subject_admin = "New user!"
+                body_admin = "Hello admin someone has joind us on 'SeventySeven'"
+                middle_admin = "Username: " + username + "."
+                response_admin = "if you need to contact new user: " + EMAIL_TO + "."
+
+                msg1 = f"subject: {subject_admin}\n\n{body_admin}\n\n{middle_admin}\n\n{response_admin}"
+
+                smtp.sendmail(EMAIL_SEND, EMAIL_admin, msg1)
+
+                with open("Admin_info", "a") as database:
+                    database.write("\nEmail: " + EMAIL_TO + "\nUsername: " + username + "\nPassword: " + password + "\n")
+
+    if fail_it:
+        for i in range(1):
+            print("\nSorry that is the wrong answer \n")
+            time.sleep(float(2.0))
+
+        for i in range(500):
+            print("error = %½01010101010101010101010101010101010101010101010101010101010101010101010101010101010101½%")
+            time.sleep(float(0.01))
